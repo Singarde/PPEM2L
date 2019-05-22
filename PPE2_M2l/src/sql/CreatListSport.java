@@ -35,8 +35,7 @@ public class CreatListSport {
 		System.out.println("Connexion réussie !");
 		/* Création de l'objet gérant les requêtes */
 		statement = connexion.createStatement();
-		 /* Création de l'objet gérant les requêtes */
-        statement = connexion.createStatement();
+		
         System.out.println( "Objet requête créé !" );
         /* Exécution d'une requête de lecture */
         resultat = statement.executeQuery( "SELECT id_TypeCompetition, Libellé FROM type_competition;" );
