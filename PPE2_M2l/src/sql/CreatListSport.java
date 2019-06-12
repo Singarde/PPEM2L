@@ -38,11 +38,11 @@ public class CreatListSport {
 		
         System.out.println( "Objet requête créé !" );
         /* Exécution d'une requête de lecture */
-        resultat = statement.executeQuery( "SELECT id_TypeCompetition, Libellé FROM type_competition;" );
+        resultat = statement.executeQuery( "SELECT id_Sport, Libellé FROM sport WHERE jouabiliter NOT LIKE 'seul';" );
         System.out.println( "Requête effectuée !" ); 
         /* Récupération des données du résultat de la requête de lecture */        
         while ( resultat.next() ) {
-            int id_TypeCompetition = resultat.getInt( "id_TypeCompetition" );
+            int id_TypeCompetition = resultat.getInt( "id_Sport" );
             String Libellé = resultat.getString( "Libellé" );
             Sport sport = new Sport(id_TypeCompetition,Libellé);           
 //            listSport.add(sport);           

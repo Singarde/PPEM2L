@@ -73,7 +73,7 @@ public class CreatListCompet {
             resultat.getString( "Lieu_C" );
             resultat.getString( "Date_C" );
             resultat.getString( "Jouabilite" );
-            resultat.getInt( "id_TypeCompetition" );
+            resultat.getInt( "id_Sport" );
             resultat.getInt( "id_employe" );
 
 

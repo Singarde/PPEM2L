@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import classe.Competition;
 import m2l.ControlAffichePanel;
 import m2l.DecoElement;
 import popUp.selectCompet;
@@ -37,18 +39,23 @@ public class PanelCompet {
 		lieu.setBounds(668, 158, 144, 20);
 		gestionCompetition.add(lieu);
 		lieu.setColumns(10);
+		
+		JTextField tfFrais = new JTextField();
+		tfFrais.setBounds(668, 322, 86, 20);
+		gestionCompetition.add(tfFrais);
+		tfFrais.setColumns(10);
 
 		// choix nombre équipe
 		Choice choice = new Choice();
 		choice.add("seul");
 		choice.add("equipe");
-		choice.setBounds(668, 269, 92, 20);
+		choice.setBounds(668, 250, 92, 20);
 		gestionCompetition.add(choice);
 
 		// choix sport
 		Choice typeCompet = new Choice();
 		CreatListSport.listSport(typeCompet);
-		typeCompet.setBounds(668, 300, 144, 20);
+		typeCompet.setBounds(668, 294, 144, 20);
 		gestionCompetition.add(typeCompet);
 
 		// voir les compet
@@ -74,7 +81,14 @@ public class PanelCompet {
 					JOptionPane.showMessageDialog(null, "les valeur rentré ne sont pas correct veiller vérifier",
 							"Information", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					CreatChamp.competition(date, nom, lieu, choice, typeCompet);
+					int sport = choice.getSelectedIndex();
+					
+					Competition competition = new Competition(0,nom.getText(),lieu.getText(),date.getText(), choice.getSelectedItem(),
+							typeCompet.getSelectedIndex(),Integer.parseInt(tfFrais.getText()));
+					
+					CreatChamp.competition(competition);
+					
+					
 				}
 
 			}
@@ -117,7 +131,7 @@ public class PanelCompet {
 		// j labelle
 		JLabel labelTyprCompet = new JLabel("type");
 		labelTyprCompet.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelTyprCompet.setBounds(518, 300, 100, 20);
+		labelTyprCompet.setBounds(518, 250, 100, 20);
 		gestionCompetition.add(labelTyprCompet);
 
 		JLabel lblDateCompetion = new JLabel("date competion");
@@ -125,10 +139,10 @@ public class PanelCompet {
 		lblDateCompetion.setBounds(521, 118, 104, 20);
 		gestionCompetition.add(lblDateCompetion);
 
-		JLabel obli = new JLabel("*AAAA-MM-JJ");
-		obli.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		obli.setBounds(820, 118, 104, 20);
-		gestionCompetition.add(obli);
+		JLabel obligationDate = new JLabel("*AAAA-MM-JJ");
+		obligationDate.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		obligationDate.setBounds(820, 118, 104, 20);
+		gestionCompetition.add(obligationDate);
 
 		JLabel lblLieu = new JLabel("Lieu");
 		lblLieu.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -142,9 +156,25 @@ public class PanelCompet {
 
 		JLabel labelJouabiliter = new JLabel("Jouabiliter");
 		labelJouabiliter.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelJouabiliter.setBounds(518, 275, 92, 14);
+		labelJouabiliter.setBounds(442, 343, 92, 14);
 		gestionCompetition.add(labelJouabiliter);
 
+		JLabel labelFrais = new JLabel("Frais d'inscription");
+		labelJouabiliter.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelJouabiliter.setBounds(518, 300, 92, 14);
+		gestionCompetition.add(labelJouabiliter);
+		
+	
+		
+		JLabel lblFraisDinscription = new JLabel("Frais D'inscription");
+		lblFraisDinscription.setBounds(521, 325, 114, 20);
+		gestionCompetition.add(lblFraisDinscription);
+		
+		JLabel label = new JLabel("\u20AC");
+		label.setBounds(776, 328, 30, 17);
+		gestionCompetition.add(label);
+		
+		
 	}
 
 }

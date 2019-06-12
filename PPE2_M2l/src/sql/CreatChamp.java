@@ -7,10 +7,11 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import classe.Competition;
+
 public class CreatChamp {
 
-	public static void competition(JTextField date1, JTextField nom1, JTextField lieu1, Choice choice,
-			Choice typeCompet) {
+	public static void competition(Competition competition) {
 		try {
 
 			System.out.println("Chargement du driver...");
@@ -40,23 +41,24 @@ public class CreatChamp {
 			System.out.println("Objet requête créé !");
 
 			/* Exécution d'une requête de lecture */
-			String date = date1.getText();
-			String lieu = lieu1.getText();
-			String nom = nom1.getText();
-			String jouabiliter = choice.getSelectedItem();
-			int sport = choice.getSelectedIndex();
+//			String date = date1.getText();
+//			String lieu = lieu1.getText();
+//			String nom = nom1.getText();
+//			String jouabiliter = choice.getSelectedItem();
+//			int sport = choice.getSelectedIndex();
 
 			// a rajouter
 			String id_employer;
 
 			statement.executeUpdate(
-					"INSERT INTO competition(Date_C,Lieu_C,Nom_Competition,Jouabilite,Id_TypeCompetition,Id_employe ) VALUES ('"
-							+ date + "','" + lieu + "','" + nom + "','" + jouabiliter + "'," + (sport + 1) + ",1);");
+					"INSERT INTO competition(Date_C,Lieu_C,Nom_Competition,Jouabilite,Id_Sport,Id_employe, FraisInscription ) VALUES ('"
+							+ competition.getDate() + "','" + competition.getLieu() + "','" + competition.getLabelCompet() + "','" + competition.getJouabilité()
+							+ "'," + (competition.getIdSport() + 1) + ",1,"+competition.getFrais()+" );");
 
 			System.out.println(
-					"INSERT INTO competition(Date_C,Lieu_C,Nom_Competition,Jouabilite,Id_TypeCompetition) VALUES ('"
-							+ date + "','" + lieu + "','" + nom + "','" + jouabiliter + "'," + (sport + 1)
-							+ ",1); effectuée !");
+					"INSERT INTO competition(Date_C,Lieu_C,Nom_Competition,Jouabilite,Id_TypeCompetition,Id_employe ) VALUES ('"
+							+ competition.getDate() + "','" + competition.getLieu() + "','" + competition.getLabelCompet() + "','" + competition.getJouabilité()
+							+ "'," + (competition.getIdSport() + 1) + ",1); effectuer");
 			JOptionPane.showMessageDialog(null, "competition crée", "Information", JOptionPane.INFORMATION_MESSAGE);
 		}
 

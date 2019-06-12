@@ -7,14 +7,18 @@ public class Competition {
 	private String lieu;
 	private String Date;
 	private String jouabilité;
+	private int idSport;
+	private int frais;
 	
 	
-	public Competition(int idCompetition,String labelCompet,String lieu,String Date, String jouabilité){
+	public Competition(int idCompetition,String labelCompet,String lieu,String Date, String jouabilité, int idSport,int frais){
 		this.idCompetition=idCompetition;
 		this.labelCompet=labelCompet;
 		this.lieu=lieu;
 		this.Date=Date;
 		this.jouabilité=jouabilité;
+		this.idSport=idSport;
+		this.frais=frais;
 	}
 	
 	
@@ -55,6 +59,26 @@ public class Competition {
 		
 		return (this.idCompetition+"-"+this.labelCompet+"-"+this.lieu+"-"+this.Date);
 		
+	}
+
+
+	public int getFrais() {
+		return frais;
+	}
+
+
+	public void setFrais(int frais) {
+		this.frais = frais;
+	}
+
+
+	public int getIdSport() {
+		return idSport;
+	}
+
+
+	public void setIdSport(int idSport) {
+		this.idSport = idSport;
 	}
 	
 	
